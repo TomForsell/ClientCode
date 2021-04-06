@@ -1,0 +1,43 @@
+body {
+  margin: 2px;
+  font-family: 'segoe ui', sans-serif;
+}
+
+.blockLink {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  background-color: burlywood;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  width: 150px;
+  height: 25px;
+  padding: 2px;
+  margin: 1px;
+}
+
+.blockLink:hover {
+  background-color: coral;
+}
+
+label {
+  width: 100px;
+  float: left;
+}
+
+input, textarea {
+  width: 200px;
+}
+
+.rating {
+  display: inline-block;
+  width: 2em;
+  margin: 0px 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  background-color: coral;
+  color: white;
+}
+
