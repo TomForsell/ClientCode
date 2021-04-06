@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Menu from "./Menu";
+import Menu from "../Menu/Menu";
 import { Switch, Route } from 'react-router-dom';
-import About from "./About";
-import All from "./All";
-import Product from "./Product";
+import About from "../About/About";
+import All from "../All";
+import Product from "../Product";
 
 
 function App() {
