@@ -1,10 +1,11 @@
 import React from "react";
+import H1 from '@dnb/eufemia/elements/H1'
 
 function About() {
 
     return (
         <div>
-            <h1>About Assignment TWO</h1>
+            <H1>About Assignment TWO</H1>
     <p>
    Not sure what it is yet
     </p>
