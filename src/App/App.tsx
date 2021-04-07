@@ -1,11 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './dnb-rgb-sjøgrønn.png';
 import './App.css';
 import Menu from "../Menu/Menu";
 import { Switch, Route } from 'react-router-dom';
 import About from "../About/About";
-import All from "../All";
-import Product from "../Product";
+import Environments from "../Environments";
+import ConfigData from "../ConfigData";
+import '@dnb/eufemia/style/core';
+import '@dnb/eufemia/style/components';
+import '@dnb/eufemia/style/themes/ui';
+import Home from '../Home/Home';
 
 
 function App() {
@@ -13,17 +17,23 @@ function App() {
       <div>
         <Menu/>
           <Switch>
-              <Route exact path="/all" >
-                  <All />
+              
+              <Route exact path="/">
+                  <Home />
+              </Route>
+              
+              <Route exact path="/environments" >
+                  <Environments />
               </Route>
 
-              <Route path="/product/:id">
-                  <Product />
+              <Route path="/configdata/:id">
+                  <ConfigData />
               </Route>
 
               <Route exact path="/about" >
                   <About />
               </Route>
+
           </Switch>
       </div>
 

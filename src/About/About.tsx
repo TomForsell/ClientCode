@@ -1,14 +1,14 @@
 import React from "react";
-import H1 from '@dnb/eufemia/elements/H1'
+import { H1, P, Link} from '@dnb/eufemia'
 
 function About() {
 
     return (
         <div>
             <H1>About Assignment TWO</H1>
-    <p>
+    <P>
    Not sure what it is yet
-    </p>
+    </P>
     <p>
     This here will be som text
     </p>
