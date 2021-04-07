@@ -5,18 +5,13 @@ function About() {
 
     return (
         <div>
-            <H1>About Assignment TWO</H1>
-    <P>
-   Not sure what it is yet
-    </P>
-    <p>
-    This here will be som text
-    </p>
-
-    <p>
-    &copy; Reskill corp
-    </p>
-    </div>
-)
-}
-export default About;
+            <H1> About Assignment 2 </H1>
+            
+            <P> Not sure what it is yet </P>
+            
+            <P> This here will be som text </P>
+            
+            <P> &copy; Reskill corp </P>
+        </div>
+    )
+} export default About;

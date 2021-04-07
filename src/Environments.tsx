@@ -16,7 +16,7 @@ function Environments() {
         <div>
             <h1>Environments</h1>
             {environments.map((e: any, i: number) =>
-                <Link key={i} className='blockLink' to={`configdata/${e.id}`}>{e.description  }</Link>
+                <Link key={i} className='blockLink' to={`environment/${e.id}`}>{e.description  }</Link>
             )}
             <br></br>
             <br></br>

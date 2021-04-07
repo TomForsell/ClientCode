@@ -8,7 +8,7 @@ export class RestClient {
         return await response.json()
     }
 
-    static async getConfigData(id: number) : Promise<any> {
+    static async getEnvironment(id: number) : Promise<any> {
         const url = `${RestClient.baseUrl}/getID/${id}`
         const response = await window.fetch(url)
         return await response.json()
