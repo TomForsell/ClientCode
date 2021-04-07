@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { RestClient } from "./RestClient"
+import { RestClient } from "./RestClient";
+
 
 export default function Environment() {
 
@@ -36,6 +37,7 @@ export default function Environment() {
         return (
             <React.Fragment>
                 {useConfigDataMarkup(environment)}
+                {useAddConfigureDataFormMarkup(environment)}
             </React.Fragment>
         )
     }
@@ -51,13 +53,60 @@ export default function Environment() {
                     {environment.configDataList.map((c: any, i: number) => 
                         <p key={i}>
                             <span className='keyName:'>{c.keyName}</span>
-                            <span className='value'>{c.value}</span>
+                            <span className='configValue'>{c.value}</span>
                             <span className='ts'> [{c.ts}]</span>
                         </p>
                     )}
                 </div>
             )
         }
+    }
+
+    function useAddConfigureDataFormMarkup(environment: any) {
+        
+        const [value, setValue] = React.useState(0) 
+
+	    const handleSubmit = (e: any) => {
+		e.preventDefault();
+		let configData = {
+			keyName:  (document.getElementById('keyName') as HTMLInputElement).value,
+			configValue: (document.getElementById('configValue') as HTMLInputElement).value,
+			ts:      (document.getElementById('ts') as HTMLInputElement).value
+		}
+		RestClient.addConfigData(environment.id, configData)
+		          .then( () => {
+					  window.alert('Nice work, you are helping DNB succeed!')
+					  e.target.reset()
+					  environment.configDataList.push(configData)
+					  setValue(value => value + 1)     
+				  })
+				  .catch(err => alert(err))
+	}
+
+	return (
+		<div>
+			<h2>Add Configuration Data</h2>
+			<form onSubmit={handleSubmit}>
+				<p>
+					<label htmlFor='keyName'>Key Name</label>
+					<input type='text' id='keyName'/>
+				</p>
+				<p>
+					<label htmlFor='configValue'>Configuration Value</label>
+					<textarea id='comment' rows={3} cols={20}/>
+				</p>
+				<p>
+					<label htmlFor='ts'>Time modified</label>
+					<input type='text' id='ts'/>
+				</p>
+				<p>
+					<label>&nbsp;</label> {/* Placeholder */}
+					<button>Save</button>
+				</p>
+			</form>
+		</div>
+	)
+
     }
 }
 
