@@ -14,12 +14,12 @@ export default function UpdateConfigDataForm(environment: any) {
         keyName:  (document.getElementById('keyName') as HTMLInputElement).value,
         configValue: (document.getElementById('configValue') as HTMLInputElement).value,
     }
-    
+
     RestClient.updateConfigData(environment.id, configData)
               .then( () => {
                   window.alert('Updated - you are helping DNB succeed!')
                   e.target.reset()
-                  environment.configData.push(configData)
+                  environment.configDataList.push(configData)
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -40,11 +40,11 @@ return (
             </p>
             <p>
                 <label htmlFor='configValue'>Configuration Value</label>
-                <textarea id='comment' rows={3} cols={20}/>
+                <input type='text' id='configValue'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}
-                <button>Save</button>
+                <button>Update</button>
             </p>
         </form>
     </div>

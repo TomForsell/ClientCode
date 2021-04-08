@@ -25,6 +25,33 @@ export class RestClient {
             }
         )
     }
+
+    static updateEnvironment(id: number, environment: any) : Promise<any> {
+        const url = `${RestClient.baseUrl}/updateEnvironment/${id}`
+        return window.fetch(
+            url,
+            {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(environment)
+            }
+        )
+    }
+    
+    //TODO
+    static deleteEnvironment(id: number) : Promise<any> {
+        const url = `${RestClient.baseUrl}/deleteEnvironment/${id}`
+        return window.fetch(
+            url,
+            {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(id)
+            }
+        )
+    }
+
+    //TODO
     static addConfigData(id: number, configData: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/addConfigForEnvironment/${id}`
         return window.fetch(
@@ -37,6 +64,7 @@ export class RestClient {
         )
     }
 
+    //TODO
     static deleteConfigData(id: number, configID: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/deleteConfigForEnvironment/${id}`
         return window.fetch(

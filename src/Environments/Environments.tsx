@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { RestClient } from "../RestClient";
 import {H1} from '@dnb/eufemia';
-import AddEnvironmentFormMarkup from "../Environments/AddEnvironmentFormMarkup"
+import AddEnvironmentForm from "../Environments/AddEnvironmentForm"
+import UpdateEnvironmentForm from "../Environments/UpdateEnvironmentForm"
+import DeleteEnvironmentForm from "../Environments/DeleteEnvironmentForm"
 
 export default function Environments() {
     let [environments, setEnvironments] = React.useState<Array<any>>([])
@@ -19,7 +21,9 @@ export default function Environments() {
             {environments.map((e: any, i: number) =>
                 <Link key={i} className='blockLink' to={`environment/${e.id}`}>{e.description  }</Link>
             )}
-            {AddEnvironmentFormMarkup(environment)}
+            {AddEnvironmentForm(environment)}
+            {UpdateEnvironmentForm(environment)}
+            {DeleteEnvironmentForm(environment)}
         </div>
     )
 

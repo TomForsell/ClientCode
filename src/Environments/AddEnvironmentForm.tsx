@@ -2,20 +2,17 @@ import React from "react";
 import { RestClient } from "../RestClient";
 import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
 
-export default function DeleteConfigDataForm(environment: any) {
-        
+export default function AddEnvrionmentForm(environment: any) {
     const [value, setValue] = React.useState(0) 
-
     const handleSubmit = (e: any) => {
     e.preventDefault();
-    const configID = {
-        configID:  (document.getElementById('configID') as HTMLInputElement).value,
+    let environment = {
+        description:  (document.getElementById('description') as HTMLInputElement).value,
     }
-    RestClient.deleteConfigData(environment.id, configID)
+    RestClient.addEnvironment(environment)
               .then( () => {
-                  window.alert('Deleted - you are helping DNB succeed!')
+                  window.alert('Added - you are helping DNB succeed!')
                   e.target.reset()
-                  environment.configDataList.delete(configID)
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -23,17 +20,17 @@ export default function DeleteConfigDataForm(environment: any) {
 
 return (
     <div>
-        <H2>Delete Configuration Data</H2>
+        <h2>Add Environment</h2>
         <form onSubmit={handleSubmit}>
             <p>
-                <label htmlFor='configID'>ConfigID</label>
-                <input type='number' id='configID'/>
+                <label htmlFor='description'>Description</label>
+                <input type='text' id='description'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}
-                <button>Delete</button>
+                <button>Save</button>
             </p>
         </form>
     </div>
     )
-}
+    }

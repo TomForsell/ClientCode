@@ -1,19 +1,20 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { RestClient } from "../RestClient";
 import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
 
-export default function AddEnvrionmentFormMarkup(environment: any) {
+export default function UpdateEnvrionmentForm(environment: any) {
     const [value, setValue] = React.useState(0) 
     const handleSubmit = (e: any) => {
     e.preventDefault();
-    let environment = {
+    let updatedEnvironment = {
+        id:           (document.getElementById('environmentID') as HTMLInputElement).value,
         description:  (document.getElementById('description') as HTMLInputElement).value,
     }
-    RestClient.addEnvironment(environment)
+    RestClient.updateEnvironment(environment.id, updatedEnvironment)
               .then( () => {
-                  window.alert('Nice work, you are helping DNB succeed!')
+                  window.alert('Updated - you are helping DNB succeed!')
                   e.target.reset()
+                  //TODO: pushe til skjerm? 
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -21,17 +22,21 @@ export default function AddEnvrionmentFormMarkup(environment: any) {
 
 return (
     <div>
-        <h2>Add Environment</h2>
+        <h2>Update Environment</h2>
         <form onSubmit={handleSubmit}>
-            <P>
+            <p>
+                <label htmlFor='environmentID'>ID</label>
+                <input type='text' id='environmentID'/>
+            </p>
+            <p>
                 <label htmlFor='description'>Description</label>
                 <input type='text' id='description'/>
-            </P>
-            <P>
+            </p>
+            <p>
                 <label>&nbsp;</label> {/* Placeholder */}
-                <button>Save</button>
-            </P>
+                <button>Update</button>
+            </p>
         </form>
     </div>
     )
-    }
+}

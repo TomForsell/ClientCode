@@ -4,6 +4,7 @@ import { RestClient } from "../RestClient";
 import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
 import AddConfigDataForm from "./AddConfigDataForm"
 import DeleteConfigDataForm from "./DeleteConfigDataForm"
+import UpdateConfigDataForm from "./UpdateConfigDataForm"
 
 export default function Environment() {
 
@@ -41,10 +42,12 @@ export default function Environment() {
                 {listAllConfigData(environment)}
                 {AddConfigDataForm(environment)}
                 {DeleteConfigDataForm(environment)}
+                {UpdateConfigDataForm(environment)}
             </React.Fragment>
         )
     }
 
+    //TODO: Make a table 
     function listAllConfigData(environment: any) {
         if (!environment.configDataList || !environment.configDataList.length) {
             return <div>No configuration data yet, sorry!</div>
@@ -55,8 +58,9 @@ export default function Environment() {
                     <H2>Configuration data</H2>
                     {environment.configDataList.map((c: any, i: number) => 
                         <P key={i}>
-                            <span className='keyName'>{c.keyName} --- </span>
-                            <span className='configValue'>{c.configValue} --- </span>
+                            <span>{c.configID} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+                            <span className='keyName'>{c.keyName} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+                            <span className='configValue'>{c.configValue} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
                             <span className='ts'>{c.ts}</span>
                         </P>
                     )}
