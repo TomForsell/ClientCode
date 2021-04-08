@@ -14,8 +14,19 @@ export class RestClient {
         return await response.json()
     }
 
+    static addEnvironment(environment: any) : Promise<any> {
+        const url = `${RestClient.baseUrl}/createEnvironment/`
+        return window.fetch(
+            url,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(environment)
+            }
+        )
+    }
     static addConfigData(id: number, configData: any) : Promise<any> {
-        const url = `${RestClient.baseUrl}/destinations/addConfigForEnvironment/${id}`
+        const url = `${RestClient.baseUrl}/addConfigForEnvironment/${id}`
         return window.fetch(
             url,
             {

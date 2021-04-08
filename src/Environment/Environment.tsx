@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { RestClient } from "./RestClient";
-
+import { RestClient } from "../RestClient";
+import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
 
 export default function Environment() {
 
@@ -22,13 +22,13 @@ export default function Environment() {
             </React.Fragment>
         )
     } else {
-        return <p>...</p>
+        return <P>...</P>
     }
 
     function EnvironmentDetails(environment: any) {
         return (
             <div>
-                <h1>{environment.description}</h1>
+                <H1>{environment.description}</H1>
             </div>
         )
     }
@@ -49,13 +49,12 @@ export default function Environment() {
         else {
             return (
                 <div>
-                    <h2>Configuration data</h2>
+                    <H2>Configuration data</H2>
                     {environment.configDataList.map((c: any, i: number) => 
-                        <p key={i}>
-                            <span className='keyName:'>{c.keyName}</span>
+                        <P key={i}>
+                            <span className='keyName'>{c.keyName}</span>
                             <span className='configValue'>{c.value}</span>
-                            <span className='ts'> [{c.ts}]</span>
-                        </p>
+                        </P>
                     )}
                 </div>
             )
@@ -71,7 +70,6 @@ export default function Environment() {
 		let configData = {
 			keyName:  (document.getElementById('keyName') as HTMLInputElement).value,
 			configValue: (document.getElementById('configValue') as HTMLInputElement).value,
-			ts:      (document.getElementById('ts') as HTMLInputElement).value
 		}
 		RestClient.addConfigData(environment.id, configData)
 		          .then( () => {
@@ -85,28 +83,23 @@ export default function Environment() {
 
 	return (
 		<div>
-			<h2>Add Configuration Data</h2>
+			<H2>Add Configuration Data</H2>
 			<form onSubmit={handleSubmit}>
 				<p>
 					<label htmlFor='keyName'>Key Name</label>
-					<input type='text' id='keyName'/>
+					<Input type='text' id='keyName'/>
 				</p>
 				<p>
 					<label htmlFor='configValue'>Configuration Value</label>
-					<textarea id='comment' rows={3} cols={20}/>
-				</p>
-				<p>
-					<label htmlFor='ts'>Time modified</label>
-					<input type='text' id='ts'/>
+					<Textarea id='comment' rows={3} cols={20}/>
 				</p>
 				<p>
 					<label>&nbsp;</label> {/* Placeholder */}
-					<button>Save</button>
+					<Button>Save</Button>
 				</p>
 			</form>
 		</div>
-	)
-
+	    )
     }
 }
 

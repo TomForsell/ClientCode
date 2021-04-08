@@ -4,12 +4,12 @@ import './App.css';
 import Menu from "../Menu/Menu";
 import { Switch, Route } from 'react-router-dom';
 import About from "../About/About";
-import Environments from "../Environments";
+import Environments from "../Environments/Environments";
 import '@dnb/eufemia/style/core';
 import '@dnb/eufemia/style/components';
 import '@dnb/eufemia/style/themes/ui';
 import Home from '../Home/Home';
-import Environment from '../Environment';
+import Environment from '../Environment/Environment';
 
 
 function App() {
