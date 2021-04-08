@@ -25,10 +25,10 @@ export class RestClient {
             }
         )
     }
-
-    static updateEnvironment(id: number, environment: any) : Promise<any> {
-        const url = `${RestClient.baseUrl}/updateEnvironment/${id}`
-        return window.fetch(
+ //TODO
+    static async updateEnvironment(environment: any) : Promise<any> {
+        const url = `${RestClient.baseUrl}/updateEnvironment/${environment.id}`
+        const response =  await fetch(
             url,
             {
                 method: 'PUT',
@@ -36,17 +36,20 @@ export class RestClient {
                 body: JSON.stringify(environment)
             }
         )
+        return response;
     }
     
-    //TODO
-    static deleteEnvironment(id: number) : Promise<any> {
+   
+    static deleteEnvironment(environment: any) : Promise<any> {
+
+        let id = environment.id
         const url = `${RestClient.baseUrl}/deleteEnvironment/${id}`
         return window.fetch(
             url,
             {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(id)
+                body: JSON.stringify({id: 1})
             }
         )
     }

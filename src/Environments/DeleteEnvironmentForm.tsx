@@ -8,10 +8,11 @@ export default function DeleteEnvironmentForm(environment: any) {
 
     const handleSubmit = (e: any) => {
     e.preventDefault();
-    let environmentID = {
-        environmentID:  (document.getElementById('environmentID') as HTMLInputElement).value,
+    let environment = {
+        id:           (document.getElementById('environmentID') as HTMLInputElement).value,
     }
-    RestClient.deleteEnvironment(environment.id)
+
+    RestClient.deleteEnvironment(environment)
               .then( () => {
                   window.alert('Deleted - you are helping DNB succeed!')
                   e.target.reset()
@@ -27,7 +28,7 @@ return (
         <form onSubmit={handleSubmit}>
             <p>
                 <label htmlFor='environmentID'>ID</label>
-                <input type='number' id='environmentID'/>
+                <input type='text' id='environmentID'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}

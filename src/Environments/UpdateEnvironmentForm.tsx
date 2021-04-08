@@ -2,19 +2,19 @@ import React from "react";
 import { RestClient } from "../RestClient";
 import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
 
-export default function UpdateEnvrionmentForm(environment: any) {
+export default function UpdateEnvironmentForm() {
     const [value, setValue] = React.useState(0) 
     const handleSubmit = (e: any) => {
     e.preventDefault();
-    let updatedEnvironment = {
+    let environment = {
         id:           (document.getElementById('environmentID') as HTMLInputElement).value,
         description:  (document.getElementById('description') as HTMLInputElement).value,
     }
-    RestClient.updateEnvironment(environment.id, updatedEnvironment)
+    RestClient.updateEnvironment(environment)
               .then( () => {
                   window.alert('Updated - you are helping DNB succeed!')
                   e.target.reset()
-                  //TODO: pushe til skjerm? 
+                  window.location.reload()
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -22,7 +22,7 @@ export default function UpdateEnvrionmentForm(environment: any) {
 
 return (
     <div>
-        <h2>Update Environment</h2>
+        <H2>Update Environment</H2>
         <form onSubmit={handleSubmit}>
             <p>
                 <label htmlFor='environmentID'>ID</label>

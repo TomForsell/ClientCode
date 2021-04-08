@@ -13,6 +13,7 @@ export default function AddEnvrionmentForm(environment: any) {
               .then( () => {
                   window.alert('Added - you are helping DNB succeed!')
                   e.target.reset()
+                  window.location.reload()
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -20,7 +21,7 @@ export default function AddEnvrionmentForm(environment: any) {
 
 return (
     <div>
-        <h2>Add Environment</h2>
+        <H2>Add Environment</H2>
         <form onSubmit={handleSubmit}>
             <p>
                 <label htmlFor='description'>Description</label>

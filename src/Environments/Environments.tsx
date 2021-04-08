@@ -22,7 +22,7 @@ export default function Environments() {
                 <Link key={i} className='blockLink' to={`environment/${e.id}`}>{e.description  }</Link>
             )}
             {AddEnvironmentForm(environment)}
-            {UpdateEnvironmentForm(environment)}
+            {UpdateEnvironmentForm()}
             {DeleteEnvironmentForm(environment)}
         </div>
     )
