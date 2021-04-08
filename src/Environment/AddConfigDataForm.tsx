@@ -9,13 +9,14 @@ export default function AddConfigDataForm(environment: any) {
     const handleSubmit = (e: any) => {
     e.preventDefault();
     let configData = {
-        keyName:  (document.getElementById('keyName') as HTMLInputElement).value,
-        configValue: (document.getElementById('configValue') as HTMLInputElement).value,
+        keyName:  (document.getElementById('addKeyName') as HTMLInputElement).value,
+        configValue: (document.getElementById('addConfigValue') as HTMLInputElement).value,
     }
     RestClient.addConfigData(environment.id, configData)
               .then( () => {
                   window.alert('Added - you are helping DNB succeed!')
                   e.target.reset()
+                  window.location.reload()
                   environment.configDataList.push(configData)
                   setValue(value => value + 1)     
               })
@@ -27,12 +28,12 @@ return (
         <H2>Add Configuration Data</H2>
         <form onSubmit={handleSubmit}>
             <p>
-                <label htmlFor='keyName'>Key Name</label>
-                <input type='text' id='keyName'/>
+                <label htmlFor='addKeyName'>Key Name</label>
+                <input type='text' id='addKeyName'/>
             </p>
             <p>
-                <label htmlFor='configValue'>Configuration Value</label>
-                <input type='text' id='configValue'/>
+                <label htmlFor='addConfigValue'>Configuration Value</label>
+                <input type='text' id='addConfigValue'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}

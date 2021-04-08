@@ -19,6 +19,7 @@ export default function UpdateConfigDataForm(environment: any) {
               .then( () => {
                   window.alert('Updated - you are helping DNB succeed!')
                   e.target.reset()
+                  window.location.reload()
                   environment.configDataList.push(configData)
                   setValue(value => value + 1)     
               })

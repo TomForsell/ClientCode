@@ -4,19 +4,19 @@ export class RestClient {
 
     static async getEnvironments() : Promise<any> {
         const url = `${RestClient.baseUrl}/all`
-        const response = await window.fetch(url)
+        const response = await fetch(url)
         return await response.json()
     }
 
     static async getEnvironment(id: number) : Promise<any> {
         const url = `${RestClient.baseUrl}/getID/${id}`
-        const response = await window.fetch(url)
+        const response = await fetch(url)
         return await response.json()
     }
 
     static addEnvironment(environment: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/createEnvironment/`
-        return window.fetch(
+        return fetch(
             url,
             {
                 method: 'POST',
@@ -25,7 +25,7 @@ export class RestClient {
             }
         )
     }
- //TODO
+ 
     static async updateEnvironment(environment: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/updateEnvironment/${environment.id}`
         const response =  await fetch(
@@ -41,23 +41,16 @@ export class RestClient {
     
    
     static deleteEnvironment(environment: any) : Promise<any> {
-
         let id = environment.id
+        console.log(id)
         const url = `${RestClient.baseUrl}/deleteEnvironment/${id}`
-        return window.fetch(
-            url,
-            {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({id: 1})
-            }
-        )
+        return fetch(url, {method: 'DELETE'})
     }
 
-    //TODO
+    
     static addConfigData(id: number, configData: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/addConfigForEnvironment/${id}`
-        return window.fetch(
+        return fetch(
             url,
             {
                 method: 'PUT',
@@ -67,24 +60,15 @@ export class RestClient {
         )
     }
 
-    //TODO
-    static deleteConfigData(id: number, configID: any) : Promise<any> {
+    static deleteConfigData(configID: any) : Promise<any> {
+        let id = configID.id
         const url = `${RestClient.baseUrl}/deleteConfigForEnvironment/${id}`
-        return window.fetch(
-            url,
-            {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(configID)
-            }
-        )
+        return fetch(url,{method: 'DELETE'})
     }
 
-
-//TODO
     static updateConfigData(id: number, configID: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/updateConfigForEnvironment/${id}`
-        return window.fetch(
+        return fetch(
             url,
             {
                 method: 'PUT',

@@ -19,7 +19,7 @@ export default function Environments() {
         <div>
             <H1>Environments</H1>
             {environments.map((e: any, i: number) =>
-                <Link key={i} className='blockLink' to={`environment/${e.id}`}>{e.description  }</Link>
+                <Link key={i} className='blockLink' to={`environment/${e.id}`}>ID: {e.id} - {e.description  }</Link>
             )}
             {AddEnvironmentForm(environment)}
             {UpdateEnvironmentForm()}

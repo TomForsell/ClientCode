@@ -7,8 +7,8 @@ export default function UpdateEnvironmentForm() {
     const handleSubmit = (e: any) => {
     e.preventDefault();
     let environment = {
-        id:           (document.getElementById('environmentID') as HTMLInputElement).value,
-        description:  (document.getElementById('description') as HTMLInputElement).value,
+        id:           (document.getElementById('updateEnvID') as HTMLInputElement).value,
+        description:  (document.getElementById('updateDescription') as HTMLInputElement).value,
     }
     RestClient.updateEnvironment(environment)
               .then( () => {
@@ -25,12 +25,12 @@ return (
         <H2>Update Environment</H2>
         <form onSubmit={handleSubmit}>
             <p>
-                <label htmlFor='environmentID'>ID</label>
-                <input type='text' id='environmentID'/>
+                <label htmlFor='updateEnvID'>ID</label>
+                <input type='text' id='updateEnvID'/>
             </p>
             <p>
-                <label htmlFor='description'>Description</label>
-                <input type='text' id='description'/>
+                <label htmlFor='updateDescription'>Description</label>
+                <input type='text' id='updateDescription'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}

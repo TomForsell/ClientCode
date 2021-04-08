@@ -8,14 +8,15 @@ export default function DeleteConfigDataForm(environment: any) {
 
     const handleSubmit = (e: any) => {
     e.preventDefault();
-    const configID = {
-        configID:  (document.getElementById('configID') as HTMLInputElement).value,
+    let configData = {
+        configID:    (document.getElementById('deleteConfigID') as HTMLInputElement).value,
     }
-    RestClient.deleteConfigData(environment.id, configID)
+    
+    RestClient.deleteConfigData(configData)
               .then( () => {
                   window.alert('Deleted - you are helping DNB succeed!')
                   e.target.reset()
-                  environment.configDataList.delete(configID)
+                  window.location.reload()
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -26,8 +27,8 @@ return (
         <H2>Delete Configuration Data</H2>
         <form onSubmit={handleSubmit}>
             <p>
-                <label htmlFor='configID'>ConfigID</label>
-                <input type='number' id='configID'/>
+                <label htmlFor='deleteConfigID'>ConfigID</label>
+                <input type='number' id='deleteConfigID'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}

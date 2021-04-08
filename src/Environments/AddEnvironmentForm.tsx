@@ -7,7 +7,7 @@ export default function AddEnvrionmentForm(environment: any) {
     const handleSubmit = (e: any) => {
     e.preventDefault();
     let environment = {
-        description:  (document.getElementById('description') as HTMLInputElement).value,
+        description:  (document.getElementById('addDescription') as HTMLInputElement).value,
     }
     RestClient.addEnvironment(environment)
               .then( () => {
@@ -24,8 +24,8 @@ return (
         <H2>Add Environment</H2>
         <form onSubmit={handleSubmit}>
             <p>
-                <label htmlFor='description'>Description</label>
-                <input type='text' id='description'/>
+                <label htmlFor='addDescription'>Description</label>
+                <input type='text' id='addDescription'/>
             </p>
             <p>
                 <label>&nbsp;</label> {/* Placeholder */}
