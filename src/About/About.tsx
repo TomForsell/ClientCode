@@ -7,7 +7,12 @@ function About() {
         <div>
             <H1> About Assignment 2 </H1>
             
-            <P> Not sure what it is yet </P>
+            <ol>
+                <li>Explain your database structure</li>
+                <li>Walk through key features in your code (both the client-side and server-side)</li>
+                <li>Discuss your approach to testing</li>
+                <li>Discuss limitations and possible extensions</li>
+             </ol>
             
             <P> This here will be som text </P>
             
