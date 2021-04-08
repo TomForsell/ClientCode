@@ -25,11 +25,11 @@ return (
         <form onSubmit={handleSubmit}>
             <P>
                 <label htmlFor='description'>Description</label>
-                <Input type='text' id='description'/>
+                <input type='text' id='description'/>
             </P>
             <P>
                 <label>&nbsp;</label> {/* Placeholder */}
-                <Button>Save</Button>
+                <button>Save</button>
             </P>
         </form>
     </div>

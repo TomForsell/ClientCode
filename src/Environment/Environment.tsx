@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { RestClient } from "../RestClient";
 import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
+import AddConfigDataForm from "./AddConfigDataForm"
+import DeleteConfigDataForm from "./DeleteConfigDataForm"
 
 export default function Environment() {
 
@@ -36,13 +38,14 @@ export default function Environment() {
     function EnvironmentConfigureData(environment: any) {
         return (
             <React.Fragment>
-                {useConfigDataMarkup(environment)}
-                {useAddConfigureDataFormMarkup(environment)}
+                {listAllConfigData(environment)}
+                {AddConfigDataForm(environment)}
+                {DeleteConfigDataForm(environment)}
             </React.Fragment>
         )
     }
 
-    function useConfigDataMarkup(environment: any) {
+    function listAllConfigData(environment: any) {
         if (!environment.configDataList || !environment.configDataList.length) {
             return <div>No configuration data yet, sorry!</div>
         }
@@ -52,54 +55,14 @@ export default function Environment() {
                     <H2>Configuration data</H2>
                     {environment.configDataList.map((c: any, i: number) => 
                         <P key={i}>
-                            <span className='keyName'>{c.keyName}</span>
-                            <span className='configValue'>{c.value}</span>
+                            <span className='keyName'>{c.keyName} --- </span>
+                            <span className='configValue'>{c.configValue} --- </span>
+                            <span className='ts'>{c.ts}</span>
                         </P>
                     )}
                 </div>
             )
         }
-    }
-
-    function useAddConfigureDataFormMarkup(environment: any) {
-        
-        const [value, setValue] = React.useState(0) 
-
-	    const handleSubmit = (e: any) => {
-		e.preventDefault();
-		let configData = {
-			keyName:  (document.getElementById('keyName') as HTMLInputElement).value,
-			configValue: (document.getElementById('configValue') as HTMLInputElement).value,
-		}
-		RestClient.addConfigData(environment.id, configData)
-		          .then( () => {
-					  window.alert('Nice work, you are helping DNB succeed!')
-					  e.target.reset()
-					  environment.configDataList.push(configData)
-					  setValue(value => value + 1)     
-				  })
-				  .catch(err => alert(err))
-	}
-
-	return (
-		<div>
-			<H2>Add Configuration Data</H2>
-			<form onSubmit={handleSubmit}>
-				<p>
-					<label htmlFor='keyName'>Key Name</label>
-					<Input type='text' id='keyName'/>
-				</p>
-				<p>
-					<label htmlFor='configValue'>Configuration Value</label>
-					<Textarea id='comment' rows={3} cols={20}/>
-				</p>
-				<p>
-					<label>&nbsp;</label> {/* Placeholder */}
-					<Button>Save</Button>
-				</p>
-			</form>
-		</div>
-	    )
     }
 }
 

@@ -37,11 +37,29 @@ export class RestClient {
         )
     }
 
-    /*
-    static async getProduct() : Promise<any> {
-        const url = `${RestClient.baseUrl}/destinations`
-        const response = await window.fetch(url)
-        return await response.json()
+    static deleteConfigData(id: number, configID: any) : Promise<any> {
+        const url = `${RestClient.baseUrl}/deleteConfigForEnvironment/${id}`
+        return window.fetch(
+            url,
+            {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(configID)
+            }
+        )
     }
-*/
+
+
+//TODO
+    static updateConfigData(id: number, configID: any) : Promise<any> {
+        const url = `${RestClient.baseUrl}/updateConfigForEnvironment/${id}`
+        return window.fetch(
+            url,
+            {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(configID)
+            }
+        )
+    }
 }
