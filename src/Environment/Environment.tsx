@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { RestClient } from "../RestClient";
-import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
+import {Button, Input, Textarea, H2, H1, P, Table, Tr, Th, Td, FormSet} from '@dnb/eufemia'
 import AddConfigDataForm from "./AddConfigDataForm"
 import DeleteConfigDataForm from "./DeleteConfigDataForm"
 import UpdateConfigDataForm from "./UpdateConfigDataForm"
@@ -38,12 +38,12 @@ export default function Environment() {
 
     function EnvironmentConfigureData(environment: any) {
         return (
-            <React.Fragment>
+            <FormSet top="medium" left="medium" direction="horizontal">
                 {listAllConfigData(environment)}
                 {AddConfigDataForm(environment)}
                 {DeleteConfigDataForm(environment)}
                 {UpdateConfigDataForm(environment)}
-            </React.Fragment>
+            </FormSet>
         )
     }
 
@@ -56,14 +56,22 @@ export default function Environment() {
             return (
                 <div>
                     <H2>Configuration data</H2>
-                    {environment.configDataList.map((c: any, i: number) => 
-                        <P key={i}>
-                            <span>{c.configID} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-                            <span className='keyName'>{c.keyName} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-                            <span className='configValue'>{c.configValue} &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-                            <span className='ts'>{c.ts}</span>
-                        </P>
-                    )}
+                    <Table className="dnb-table">
+                        <Tr>
+                            <Th>ConfigID</Th>
+                            <Th>Key Name</Th>
+                            <Th>Config Value</Th>
+                            <Th>Time modified</Th>
+                        </Tr>
+                            {environment.configDataList.map((c: any, i: number) => 
+                        <tr key={i}>
+                            <Td>{c.configID}</Td>
+                            <Td className='keyName'>{c.keyName}</Td>
+                            <Td className='configValue'>{c.configValue}</Td>
+                            <Td className='ts'>{c.ts}</Td>
+                        </tr>
+                            )}
+                    </Table>
                 </div>
             )
         }

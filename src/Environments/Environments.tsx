@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { RestClient } from "../RestClient";
-import {H1} from '@dnb/eufemia';
+import {FormSet, H1} from '@dnb/eufemia';
 import AddEnvironmentForm from "../Environments/AddEnvironmentForm"
 import UpdateEnvironmentForm from "../Environments/UpdateEnvironmentForm"
 import DeleteEnvironmentForm from "../Environments/DeleteEnvironmentForm"
@@ -17,13 +17,15 @@ export default function Environments() {
 
     return (
         <div>
-            <H1>Environments</H1>
+            <H1 top="medium" left="medium">Environments</H1>
             {environments.map((e: any, i: number) =>
                 <Link key={i} className='blockLink' to={`environment/${e.id}`}>ID: {e.id} - {e.description  }</Link>
             )}
-            {AddEnvironmentForm(environment)}
-            {UpdateEnvironmentForm()}
-            {DeleteEnvironmentForm(environment)}
+            <FormSet top="medium" left="medium">
+                {AddEnvironmentForm(environment)}
+                {UpdateEnvironmentForm()}
+                {DeleteEnvironmentForm(environment)}
+            </FormSet>
         </div>
     )
 

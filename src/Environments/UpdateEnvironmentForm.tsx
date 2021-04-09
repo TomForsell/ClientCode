@@ -1,11 +1,10 @@
 import React from "react";
 import { RestClient } from "../RestClient";
-import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
+import {Button, Input, Textarea, H2, H1, P, FormRow} from '@dnb/eufemia'
 
 export default function UpdateEnvironmentForm() {
     const [value, setValue] = React.useState(0) 
     const handleSubmit = (e: any) => {
-    e.preventDefault();
     let environment = {
         id:           (document.getElementById('updateEnvID') as HTMLInputElement).value,
         description:  (document.getElementById('updateDescription') as HTMLInputElement).value,
@@ -13,7 +12,6 @@ export default function UpdateEnvironmentForm() {
     RestClient.updateEnvironment(environment)
               .then( () => {
                   window.alert('Updated - you are helping DNB succeed!')
-                  e.target.reset()
                   window.location.reload()
                   setValue(value => value + 1)     
               })
@@ -22,21 +20,14 @@ export default function UpdateEnvironmentForm() {
 
 return (
     <div>
-        <H2>Update Environment</H2>
-        <form onSubmit={handleSubmit}>
-            <p>
-                <label htmlFor='updateEnvID'>ID</label>
-                <input type='text' id='updateEnvID'/>
-            </p>
-            <p>
-                <label htmlFor='updateDescription'>Description</label>
-                <input type='text' id='updateDescription'/>
-            </p>
-            <p>
-                <label>&nbsp;</label> {/* Placeholder */}
-                <button>Update</button>
-            </p>
-        </form>
+        <H2 top="medium">Update Environment</H2>
+        <FormRow vertical>
+            <P>
+                <Input label="ID:" type='text' id='updateEnvID'/>
+                <Input label="Description:" type='text' id='updateDescription'/>
+                <Button top="small" on_click={handleSubmit} right="small">Update</Button>
+            </P>
+        </FormRow>
     </div>
     )
 }

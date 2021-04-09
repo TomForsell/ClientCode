@@ -1,13 +1,13 @@
 import React from "react";
 import { RestClient } from "../RestClient";
-import {Button, Input, Textarea, H2, H1, P} from '@dnb/eufemia'
+import {Button, Input, H2, H1, P, FormSet, FormRow} from '@dnb/eufemia'
+
 
 export default function DeleteEnvironmentForm(environment: any) {
         
     const [value, setValue] = React.useState(0) 
 
     const handleSubmit = (e: any) => {
-    e.preventDefault();
     let environment = {
         id:           (document.getElementById('deleteEnvID') as HTMLInputElement).value,
     }
@@ -15,7 +15,6 @@ export default function DeleteEnvironmentForm(environment: any) {
     RestClient.deleteEnvironment(environment)
               .then( () => {
                   window.alert('Deleted - you are helping DNB succeed!')
-                  e.target.reset()
                   window.location.reload()
                   setValue(value => value + 1)     
               })
@@ -24,16 +23,12 @@ export default function DeleteEnvironmentForm(environment: any) {
 
 return (
     <div>
-        <H2>Delete Environment</H2>
-        <form onSubmit={handleSubmit}>
-            <p>
-                <label htmlFor='deleteEnvID'>ID</label>
-                <input type='text' id='deleteEnvID'/>
-            </p>
-            <p>
-                <label>&nbsp;</label> {/* Placeholder */}
-                <button>Delete</button>
-            </p>
+        <H2 top="large">Delete Environment</H2>    
+        <form>
+            <P top="small">
+                <Input label="ID:" type='text' id='deleteEnvID' right="small"/>
+                <Button right="small" on_click={handleSubmit} >Delete</Button>
+            </P>
         </form>
     </div>
     )
