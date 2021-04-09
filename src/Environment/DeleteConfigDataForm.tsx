@@ -15,6 +15,7 @@ export default function DeleteConfigDataForm(environment: any) {
               .then( () => {
                   window.alert('Deleted - you are helping DNB succeed!')
                   window.location.reload()
+                  //environment.configDataList.remove(configData)
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))
@@ -25,8 +26,8 @@ return (
         <H2 top="large">Delete Configuration Data</H2>    
         <form>
             <P top="small">
-                <Input label="ID:" type='text' id='deleteConfigID' right="small"/>
-                <Button on_click={handleSubmit} >Delete</Button>
+                <Input label="ID:" label_direction="vertical" type='text' id='deleteConfigID' right="small"/>
+                <Button top="small" on_click={handleSubmit} >Delete</Button>
             </P>
         </form>
     </div>

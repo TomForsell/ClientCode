@@ -8,7 +8,7 @@ import DeleteEnvironmentForm from "../Environments/DeleteEnvironmentForm"
 
 export default function Environments() {
     let [environments, setEnvironments] = React.useState<Array<any>>([])
-    let [environment, setEnvironment] = React.useState<any>(undefined)
+    let [environment] = React.useState<any>(undefined)
 
     React.useEffect(() => {
         RestClient.getEnvironments()

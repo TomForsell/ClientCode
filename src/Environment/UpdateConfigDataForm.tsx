@@ -10,8 +10,9 @@ export default function UpdateConfigDataForm(environment: any) {
 
     const handleSubmit = (e: any) => {
     let configData = {
+        configID: (document.getElementById('updateConfigID') as HTMLInputElement).value,
         keyName:  (document.getElementById('updateKeyName') as HTMLInputElement).value,
-        configValue: (document.getElementById('updateConfigID') as HTMLInputElement).value,
+        configValue: (document.getElementById('updateConfigValue') as HTMLInputElement).value,
     }
 
     RestClient.updateConfigData(environment.id, configData)

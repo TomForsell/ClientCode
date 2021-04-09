@@ -66,14 +66,14 @@ export class RestClient {
         return fetch(url,{method: 'DELETE'})
     }
 
-    static updateConfigData(id: number, configID: any) : Promise<any> {
+    static updateConfigData(id: any, configData: any) : Promise<any> {
         const url = `${RestClient.baseUrl}/updateConfigForEnvironment/${id}`
         return fetch(
             url,
             {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(configID)
+                body: JSON.stringify(configData)
             }
         )
     }

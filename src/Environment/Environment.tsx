@@ -31,7 +31,7 @@ export default function Environment() {
     function EnvironmentDetails(environment: any) {
         return (
             <div>
-                <H1>{environment.description}</H1>
+                <H1 top="medium" left="medium">{environment.description}</H1>
             </div>
         )
     }
@@ -58,7 +58,7 @@ export default function Environment() {
                     <H2>Configuration data</H2>
                     <Table className="dnb-table">
                         <Tr>
-                            <Th>ConfigID</Th>
+                            <Th >ConfigID</Th>
                             <Th>Key Name</Th>
                             <Th>Config Value</Th>
                             <Th>Time modified</Th>

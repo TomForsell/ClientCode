@@ -26,8 +26,8 @@ return (
         <H2 top="large">Delete Environment</H2>    
         <form>
             <P top="small">
-                <Input label="ID:" type='text' id='deleteEnvID' right="small"/>
-                <Button right="small" on_click={handleSubmit} >Delete</Button>
+                <Input label="ID:" type='text' id='deleteEnvID' label_direction="vertical"/>
+                <Button top="small" bottom="small" on_click={handleSubmit} >Delete</Button>
             </P>
         </form>
     </div>

@@ -22,8 +22,8 @@ return (
         <H2>Add Environment</H2>
         <form>
             <P top="small">
-                <Input label="Description:" type='text' id='addDescription' right="small"/>
-                <Button on_click={handleSubmit}>Save</Button>
+                <Input label="Description:" label_direction="vertical" type='text' id='addDescription' />
+                <Button top="small" on_click={handleSubmit}>Save</Button>
             </P>
         </form>
     </div>
