@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './dnb-rgb-sjøgrønn.png';
 import './App.css';
 import Menu from "../Menu/Menu";
 import { Switch, Route } from 'react-router-dom';
