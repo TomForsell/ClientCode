@@ -60,10 +60,20 @@ export class RestClient {
         )
     }
 
-    static deleteConfigData(configID: any) : Promise<any> {
-        let id = configID.id
+    static deleteConfigData(configData: any) : Promise<any> {
+        let id = configData.configID
+        console.log(id)
         const url = `${RestClient.baseUrl}/deleteConfigForEnvironment/${id}`
-        return fetch(url,{method: 'DELETE'})
+        return fetch(
+            url,
+            {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(configData)
+
+            }
+        )
+
     }
 
     static updateConfigData(id: any, configData: any) : Promise<any> {
