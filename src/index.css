@@ -7,7 +7,7 @@ body {
   text-decoration: none;
   display: inline-block;
   text-align: center;
-  background-color: burlywood;
+  background-color: #007272;
   font-size: 1em;
   font-weight: bold;
   color: white;
@@ -18,7 +18,7 @@ body {
 }
 
 .blockLink:hover {
-  background-color: coral;
+  background-color: rgb(40, 180, 130);
 }
 
 label {

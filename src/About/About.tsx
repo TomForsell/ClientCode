@@ -20,14 +20,13 @@ function About() {
                         <Li>Sever side:</Li>
                             <Ul>
                                 <Li>Advanced REST client</Li>
-                                <Li>Unit tests</Li>
                             </Ul>
                     </Ul>
                     <Ul>
                         <Li>Client side:</Li>
                             <Ul>
                                 <Li>No writen tests. Haven't learned yet</Li>
-                                <Li>Debuged with inspect mode and refresh</Li>
+                                <Li>Debuged with inspect mode, refresh, alert and console.log</Li>
                             </Ul>
                     </Ul>
                 <Li>Limitations and possible extensions</Li>
@@ -36,7 +35,7 @@ function About() {
                         <Li>Paging</Li>
                         <Li>Find configuration data within a timeframe</Li>
                         <Li>Handling exceptions</Li>
-                        <Li>Tests on client side</Li>
+                        <Li>Unit tests on client and server side</Li>
                     </Ul>
                    
             </Ul>
