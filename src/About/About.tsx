@@ -34,6 +34,7 @@ function About() {
                         <Li>Login and admin</Li>
                         <Li>Paging</Li>
                         <Li>Find configuration data within a timeframe</Li>
+                        <Li>Update timestamp when modified</Li>
                         <Li>Handling exceptions</Li>
                         <Li>Unit tests on client and server side</Li>
                     </Ul>

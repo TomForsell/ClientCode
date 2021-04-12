@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { RestClient } from "../RestClient";
-import {Button, Input, Textarea, H2, H1, P, Table, Tr, Th, Td, FormSet} from '@dnb/eufemia'
+import {H2, H1, P, Table, Tr, Th, Td, FormSet} from '@dnb/eufemia'
 import AddConfigDataForm from "./AddConfigDataForm"
 import DeleteConfigDataForm from "./DeleteConfigDataForm"
 import UpdateConfigDataForm from "./UpdateConfigDataForm"
@@ -47,7 +47,7 @@ export default function Environment() {
         )
     }
 
-    //TODO: Make a table 
+
     function listAllConfigData(environment: any) {
         if (!environment.configDataList || !environment.configDataList.length) {
             return <div>No configuration data yet, sorry!</div>
@@ -58,7 +58,7 @@ export default function Environment() {
                     <H2>Configuration data</H2>
                     <Table className="dnb-table">
                         <Tr>
-                            <Th >ConfigID</Th>
+                            <Th>ConfigID</Th>
                             <Th>Key Name</Th>
                             <Th>Config Value</Th>
                             <Th>Time modified</Th>

@@ -15,7 +15,6 @@ export default function DeleteConfigDataForm(environment: any) {
               .then( () => {
                   window.alert('Deleted - you are helping DNB succeed!')
                   window.location.reload()
-                  //environment.configDataList.remove(configData)
                   setValue(value => value + 1)     
               })
               .catch(err => alert(err))

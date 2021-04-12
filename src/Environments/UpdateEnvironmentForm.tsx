@@ -1,6 +1,6 @@
 import React from "react";
 import { RestClient } from "../RestClient";
-import {Button, Input, Textarea, H2, H1, P, FormRow} from '@dnb/eufemia'
+import {Button, Input, H2, H1, P, FormRow} from '@dnb/eufemia'
 
 export default function UpdateEnvironmentForm() {
     const [value, setValue] = React.useState(0) 

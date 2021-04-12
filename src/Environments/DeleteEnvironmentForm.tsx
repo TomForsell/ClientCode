@@ -1,6 +1,6 @@
 import React from "react";
 import { RestClient } from "../RestClient";
-import {Button, Input, H2, H1, P, FormSet, FormRow} from '@dnb/eufemia'
+import {Button, Input, H2, P} from '@dnb/eufemia'
 
 
 export default function DeleteEnvironmentForm(environment: any) {
