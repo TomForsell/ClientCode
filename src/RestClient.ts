@@ -2,20 +2,20 @@ export class RestClient {
 
     static baseUrl = "http://localhost:8080/assignment"
 
-    static async getEnvironments() : Promise<any> {
-        const url = `${RestClient.baseUrl}/all`
+    static async getAllEnvironments() : Promise<any> {
+        const url = `${RestClient.baseUrl}/getAllEnvironments`
         const response = await fetch(url)
         return await response.json()
     }
 
     static async getEnvironment(id: number) : Promise<any> {
-        const url = `${RestClient.baseUrl}/getID/${id}`
+        const url = `${RestClient.baseUrl}/getEnvironment/${id}`
         const response = await fetch(url)
         return await response.json()
     }
 
     static addEnvironment(environment: any) : Promise<any> {
-        const url = `${RestClient.baseUrl}/createEnvironment/`
+        const url = `${RestClient.baseUrl}/addEnvironment/`
         return fetch(
             url,
             {
@@ -27,7 +27,7 @@ export class RestClient {
     }
  
     static async updateEnvironment(environment: any) : Promise<any> {
-        const url = `${RestClient.baseUrl}/updateEnvironment/${environment.id}`
+        const url = `${RestClient.baseUrl}/updateEnvironment/ig`
         const response =  await fetch(
             url,
             {
@@ -45,6 +45,12 @@ export class RestClient {
         console.log(id)
         const url = `${RestClient.baseUrl}/deleteEnvironment/${id}`
         return fetch(url, {method: 'DELETE'})
+    }
+
+    static async getConfigData(id: number) : Promise<any> {
+        const url = `${RestClient.baseUrl}/getConfigData/${id}`
+        const response = await fetch(url)
+        return await response.json()
     }
 
     

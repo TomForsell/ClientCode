@@ -11,7 +11,7 @@ export default function Environments() {
     let [environment] = React.useState<any>(undefined)
 
     React.useEffect(() => {
-        RestClient.getEnvironments()
+        RestClient.getAllEnvironments()
                   .then(environments => setEnvironments(environments))
     }, [])
 

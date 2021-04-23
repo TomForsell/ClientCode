@@ -5,6 +5,8 @@ import {H2, H1, P, Table, Tr, Th, Td, FormSet} from '@dnb/eufemia'
 import AddConfigDataForm from "./AddConfigDataForm"
 import DeleteConfigDataForm from "./DeleteConfigDataForm"
 import UpdateConfigDataForm from "./UpdateConfigDataForm"
+import { Pagination } from '@dnb/eufemia/components'
+
 
 export default function Environment() {
 
@@ -39,7 +41,9 @@ export default function Environment() {
     function EnvironmentConfigureData(environment: any) {
         return (
             <FormSet top="medium" left="medium" direction="horizontal">
-                {listAllConfigData(environment)}
+                <Pagination page_count={3} align="center">
+                    {listAllConfigData(environment)}
+                </Pagination>
                 {AddConfigDataForm(environment)}
                 {DeleteConfigDataForm(environment)}
                 {UpdateConfigDataForm(environment)}
