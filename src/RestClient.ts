@@ -1,7 +1,7 @@
 export class RestClient {
 
+    //static baseUrl = "https://backend.badegruppen.com:8080/assignment"
     static baseUrl = "http://localhost:8080/assignment"
-
     static async getAllEnvironments() : Promise<any> {
         const url = `${RestClient.baseUrl}/getAllEnvironments`
         const response = await fetch(url)
@@ -27,7 +27,8 @@ export class RestClient {
     }
  
     static async updateEnvironment(environment: any) : Promise<any> {
-        const url = `${RestClient.baseUrl}/updateEnvironment/ig`
+        let id = environment.id
+        const url = `${RestClient.baseUrl}/updateEnvironment/${id}`
         const response =  await fetch(
             url,
             {
@@ -47,11 +48,13 @@ export class RestClient {
         return fetch(url, {method: 'DELETE'})
     }
 
-    static async getConfigData(id: number) : Promise<any> {
+    /** 
+    static async getConfigData(id: number) : Promise<Array<any>> {
         const url = `${RestClient.baseUrl}/getConfigData/${id}`
         const response = await fetch(url)
         return await response.json()
     }
+    **/
 
     
     static addConfigData(id: number, configData: any) : Promise<any> {

@@ -41,8 +41,13 @@ export default function Environment() {
     function EnvironmentConfigureData(environment: any) {
         return (
             <FormSet top="medium" left="medium" direction="horizontal">
-                <Pagination page_count={3} align="center">
-                    {listAllConfigData(environment)}
+                <Pagination page_count={3} align="center" on_change= { ({ page }) => {console.log('on_change:', page)} }>
+                    { 
+                    ({ page }) => 
+                        <P>
+                           {listAllConfigData(environment, page)}
+                        </P>
+                    }
                 </Pagination>
                 {AddConfigDataForm(environment)}
                 {DeleteConfigDataForm(environment)}
@@ -52,7 +57,10 @@ export default function Environment() {
     }
 
 
-    function listAllConfigData(environment: any) {
+    function listAllConfigData(environment: any, page: any) {
+        const startElementPage = ((page-1) * 5)
+        const endElementPage = page * 5
+        
         if (!environment.configDataList || !environment.configDataList.length) {
             return <div>No configuration data yet, sorry!</div>
         }
@@ -67,7 +75,8 @@ export default function Environment() {
                             <Th>Config Value</Th>
                             <Th>Time modified</Th>
                         </Tr>
-                            {environment.configDataList.map((c: any, i: number) => 
+                            
+                            {environment.configDataList.slice(startElementPage, endElementPage).map((c: any, i: number) => 
                         <tr key={i}>
                             <Td>{c.configID}</Td>
                             <Td className='keyName'>{c.keyName}</Td>
@@ -81,4 +90,3 @@ export default function Environment() {
         }
     }
 }
-
